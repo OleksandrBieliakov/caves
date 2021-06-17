@@ -45,16 +45,22 @@ public class Path {
         numberOfDifficultConnections++;
     }
 
-    @Override
-    public String toString() {
+    public String roomsString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Room room : rooms) {
             stringBuilder.append(room.getName());
             stringBuilder.append(" ");
         }
-        String roomsString = stringBuilder.toString();
+        if (!rooms.isEmpty()) {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
         return "Path{" +
-                "rooms=" + roomsString +
+                "rooms=" + roomsString() +
                 ", numberOfDifficultConnections=" + numberOfDifficultConnections +
                 '}';
     }

@@ -15,7 +15,7 @@ public class Cave {
 
     private final HashMap<String, Room> rooms = new HashMap<>();
 
-    public void addPath(String room1Name, String room2Name, boolean pathBad) {
+    public void addPath(String room1Name, String room2Name, boolean isDifficultCorridor) {
         Room room1 = rooms.get(room1Name);
         if (room1 == null) {
             room1 = new Room();
@@ -28,9 +28,9 @@ public class Cave {
             room2.setName(room2Name);
             rooms.put(room2Name, room2);
         }
-        room1.connect(room2, pathBad);
+        room1.connect(room2, isDifficultCorridor);
         numberOfCorridors++;
-        if(pathBad) {
+        if(isDifficultCorridor) {
             numberOfDifficultCorridors++;
         }
     }
